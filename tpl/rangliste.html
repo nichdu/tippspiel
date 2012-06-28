@@ -1,0 +1,47 @@
+{include="header"}
+<h1>Rangliste</h1>
+<table class="rangliste">
+    <tr>
+        <th>
+            Platz
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Exaktes Ergebnis
+        </th>
+        <th>
+            Korrektes Torverhältnis
+        </th>
+        <th>
+            Sieger richtig
+        </th>
+        <th>
+            Punkte
+        </th>
+    </tr>
+    {loop="points"}
+    <tr>
+        <th>
+            {$key}
+        </th>
+        <td>
+            {$value.username}
+        </td>
+        <td>
+            {$value.exakt}
+        </td>
+        <td>
+            {$value.verhaeltnis}
+        </td>
+        <td>
+            {$value.sieger}
+        </td>
+        <td>
+            {$value.punkte}
+        </td>
+    </tr>
+    {/loop}
+</table>
+{include="footer"}
