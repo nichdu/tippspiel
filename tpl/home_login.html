@@ -1,5 +1,6 @@
 {if="$aktuelleErgebnisse"}
 <h2>Aktuelle Ergebnisse</h2>
+<p>{$spieltagAktuell}. Spieltag</p>
 <table class="ergebnisUebersicht">
 {loop="aktuelleSpiele"}
     <tr>
@@ -21,6 +22,7 @@
 {/if}
 {if="naechsterSpieltag"}
 <h2>Nächster Spieltag</h2>
+<p>{$spieltagNaechst}. Spieltag</p>
 <table class="ergebnisUebersicht">
 {loop="aktuelleSpiele"}
     <tr>
