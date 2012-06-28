@@ -1,0 +1,29 @@
+{include="header"}
+<h1>Tippabgabe</h1>
+<form action="index.php"><label for="spieltagAuswahl">Spieltag: </label><select id="spieltagAuswahl">
+{loop="$spieltage"}
+<option value="{$value}">{$value}</option>
+{/loop}
+</select></form>
+<form action="tipp.php" method="post" accept-charset="UTF-8">
+<table class="ergebnisUebersicht">
+{loop="$spiele"}
+    <tr>
+        <td>
+            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+        </td>
+        <td class="abstandHalterBindestrich">
+            -
+        </td>
+        <td>
+            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+        </td>
+        <td>
+            <input type="text" size="2" name="spiel_{$value.id}_heim" />:<input type="text" size="2" name="spiel_{$value.id}_auswaerts" />
+        </td>
+    </tr>
+{/loop}
+</table>
+<span><a href="#" id="tippSubmit">Speicherns</a></span>
+</form>
+{include="footer"}
