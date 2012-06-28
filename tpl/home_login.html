@@ -1,0 +1,41 @@
+{if="$aktuelleErgebnisse"}
+<h2>Aktuelle Ergebnisse</h2>
+<table class="ergebnisUebersicht">
+{loop="aktuelleSpiele"}
+    <tr>
+        <td>
+            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+        </td>
+        <td class="abstandHalterBindestrich">
+            -
+        </td>
+        <td>
+            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+        </td>
+        <td>
+            {$value.heim.tore}:{$value.auswaerts.tore}
+        </td>
+    </tr>
+{/loop}
+</table>
+{/if}
+{if="naechsterSpieltag"}
+<h2>Nächster Spieltag</h2>
+<table class="ergebnisUebersicht">
+{loop="aktuelleSpiele"}
+    <tr>
+        <td>
+            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+        </td>
+        <td class="abstandHalterBindestrich">
+            -
+        </td>
+        <td>
+            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+        </td>
+        <td>
+            -:-
+        </td>
+    </tr>
+</table>
+{/if}
