@@ -2,6 +2,26 @@
 <h2>Aktuelle Ergebnisse</h2>
 <p>{$spieltagAktuell}. Spieltag</p>
 <table class="ergebnisUebersicht">
+<tr>
+    <th>
+        Heim
+    </th>
+    <th>
+        -
+    </th>
+    <th>
+        Auswärts
+    </th>
+    <th>
+        Ergebnis
+    </th>
+    <th>
+        Dein Tipp
+    </th>
+    <th>
+        Punkte
+    </th>
+</tr>
 {loop="aktuelleSpiele"}
     <tr>
         <td>
@@ -15,6 +35,12 @@
         </td>
         <td>
             {$value.heim.tore}:{$value.auswaerts.tore}
+        </td>
+        <td>
+            {$value.heim.tipp}:{$value.auswaerts.tipp}
+        </td>
+        <td>
+            {$value.punkte}
         </td>
     </tr>
 {/loop}
