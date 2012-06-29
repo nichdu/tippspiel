@@ -12,10 +12,10 @@ class Loader
 
     private function autoLoad($class)
     {
-        $ret = include './' . $class . '.class.php';
+        $ret = include './class/' . $class . '.class.php';
         if (!$ret)
         {
-            include './Exception/' . $class . '.class.php';
+            include './class/Exception/' . $class . '.class.php';
         }
     }
 }
