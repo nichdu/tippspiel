@@ -84,7 +84,9 @@ $(document).ready(function() {
 function connectError()
 {
     alert('Bei der Verbindung ist ein Fehler aufgetreten. Möglicherweise sind Sie nicht mit dem Internet ' +
-        'verbunden. Bitte versuchen Sie es später noch einmal.');
+        'verbunden oder der Server konnte Ihre Anfrage nicht korrekt verarbeiten. Bitte versuchen Sie es ' +
+        'später noch einmal. Sollte dieser Fehler über längere Zeit bestehen, informieren Sie bitte einen ' +
+        'Administrator.');
 }
 
 function checkEmailAddress(value)
