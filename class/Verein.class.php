@@ -43,11 +43,13 @@ class Verein
         {
             throw new mysqli_sql_exception($stmt->error, $stmt->errno);
         }
-        $stmt->bind_result($this->id, $this->name, $this->kuerzel, $this->logo);
+        $logo = '';
+        $stmt->bind_result($this->id, $this->name, $this->kuerzel, $logo);
         if (!$stmt->fetch())
         {
             throw new VereinExistiertNichtException();
         }
+        $this->logo = base64_encode($logo);
         $stmt->close();
     }
 
