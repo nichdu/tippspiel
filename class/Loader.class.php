@@ -12,6 +12,7 @@ class Loader
 
     private function autoLoad($class)
     {
+        $ret = false;
         if (substr($class, -4) === 'Page')
         {
             $cn = substr($class, 0, -4);
