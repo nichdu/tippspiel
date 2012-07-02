@@ -119,4 +119,9 @@ class Spiel
         }
         return $ret;
     }
+
+    public  function getId()
+    {
+        return $this->id;
+    }
 }
