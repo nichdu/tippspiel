@@ -18,6 +18,8 @@ class DbTipp extends Tipp
 
     public function __construct($uid, $spiel_id)
     {
+        $this->uid = $uid;
+        $this->spiel_id = $spiel_id;
         $this->spiel = new Spiel($this->spiel_id);
         $this->user = new User(User::getNameById($this->uid));
         $this->loadFromDatabase();
