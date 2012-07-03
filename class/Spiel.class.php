@@ -124,4 +124,29 @@ class Spiel
     {
         return $this->id;
     }
+
+    /**
+     * Gibt den Sieger des Spiels zurueck
+     * @return int|null TIPPSPIEL_HEIMSIEG, TIPPSPIEL_UNENTSCHIEDEN, TIPPSPIEL_AUSWAERTSSIEG oder null, wenn kein Ergebnis bekannt
+     */
+    public function getSieger()
+    {
+        $ret = null;
+        if (is_int($this->heimTore) && is_int($this->auswaertsTore))
+        {
+            if ($this->heimTore === $this->auswaertsTore)
+            {
+                $ret =  TIPPSPIEL_UNENTSCHIEDEN;
+            }
+            else if ($this->heimTore > $this->auswaertsTore)
+            {
+                $ret =  TIPPSPIEL_HEIMSIEG;
+            }
+            else if ($this->auswaertsTore > $this->heimTore)
+            {
+                $ret = TIPPSPIEL_AUSWAERTSSIEG;
+            }
+        }
+        return $ret;
+    }
 }
