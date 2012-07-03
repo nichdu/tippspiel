@@ -13,16 +13,14 @@
 <body>
     <div class="top"><a href="/"><img src="img/logo.png" title="Bildquelle: Uwe Steinbrich  / pixelio.de" /></a></div>
     <div class="content">
-        <div>
-            <ul class="menu">
-                <li><a href="/">Start</a></li>
-                {if="$login"}
-                <li><a href="/rangliste">Rangliste</a></li>
-                <li><a href="/tippabgabe">Tippabgabe</a></li>
-                <li><a href="/profil">Profil</a></li>
-                <li><a href="/logout">Logout</a></li>
-                {else}
-                <li><a href="/registrieren">Registrieren</a></li>
-                {/if}
-            </ul>
-        </div>
+        <nav>
+            <a href="/">Start</a> |
+            {if="$login"}
+            <a href="/rangliste">Rangliste</a> |
+            <a href="/tippabgabe">Tippabgabe</a> |
+            <a href="/profil">Profil</a> |
+            <a href="/logout">Logout</a>
+            {else}
+            <a href="/registrieren">Registrieren</a>
+            {/if}
+        </nav>
