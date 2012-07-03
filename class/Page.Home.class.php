@@ -45,19 +45,43 @@ class HomePage
 
     private function generateAktuelleErgebnisse()
     {
+        $db = Database::getDbObject();
         $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` < CURDATE() LIMIT 1;";
-        $this->generate($query, 'aktuelleErgebnisse', 'aktuelleSpiele', 'spieltagAktuell');
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows > 0)
+        {
+            $id = 0;
+            $stmt->bind_result($id);
+            $stmt->fetch();
+            $spieltag = new Spieltag($id);
+            $st = array();
+            $i = 0;
+            foreach ($spieltag as $v)
+            {
+                $st[$i] = array();
+                $st[$i]['spiel'] = $v;
+                try
+                {
+                    $tipp = new DbTipp(User::getIdByName($_SESSION['session']->getUserName()), $v->getId());
+                    $st[$i]['tipp'] = $tipp;
+                }
+                catch (TippExistiertNichtException $e)
+                {
+                    $st[$i]['tipp'] = null;
+                }
+            }
+            $this->raintpl->assign('aktuelleErgebnisse', true);
+            $this->raintpl->assign('aktuelleSpiele', $st);
+            $this->raintpl->assign('spieltagAktuell', $id);
+        }
     }
 
     private function generateNaechstenSpieltag()
     {
-        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` >= CURDATE() LIMIT 1;";
-        $this->generate($query, 'naechsterSpieltag', 'naechsteSpiele', 'spieltagNaechst');
-    }
-
-    private function generate($query, $nameBooleanField, $nameSpieltagField, $nameIdField)
-    {
         $db = Database::getDbObject();
+        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` >= CURDATE() LIMIT 1;";
         $stmt = $db->prepare($query);
         $stmt->execute();
         $stmt->store_result();
@@ -72,9 +96,9 @@ class HomePage
             {
                 $st[] = $v;
             }
-            $this->raintpl->assign($nameBooleanField, true);
-            $this->raintpl->assign($nameSpieltagField, $st);
-            $this->raintpl->assign($nameIdField, $id);
+            $this->raintpl->assign('naechsterSpieltag', true);
+            $this->raintpl->assign('naechsteSpiele', $st);
+            $this->raintpl->assign('spieltagNaechst', $id);
         }
     }
 }
