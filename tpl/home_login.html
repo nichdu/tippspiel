@@ -1,3 +1,4 @@
+{$img="img"}
 {if="$aktuelleErgebnisse"}
 <h2>Aktuelle Ergebnisse</h2>
 <p>{$spieltagAktuell}. Spieltag</p>
@@ -22,26 +23,35 @@
         Punkte
     </th>
 </tr>
-{loop="aktuelleSpiele"}
+{loop="$aktuelleSpiele"}
     <tr>
         <td>
-            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+            <{$img} src="data:image/png;base64,{$value.spiel->getHeim()->getLogo()}" alt="{$value.spiel->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value.spiel->getHeim()->getName()}
         </td>
         <td class="abstandHalterBindestrich">
             -
         </td>
         <td>
-            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+            <{$img} src="data:image/png;base64,{$value.spiel->getAuswaerts()->getLogo()}" alt="{$value.spiel->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value.spiel->getAuswaerts()->getName()}
         </td>
         <td>
-            {$value.heim.tore}:{$value.auswaerts.tore}
+            {$value.spiel->getHeimTore()}:{$value.spiel->getAuswaertsTore()}
+        </td>
+        {if="is_null($value.tipp)"}
+        <td>-</td><td>-</td>
+        {else}
+        <td>
+            {$value.tipp->getHeimTipp()}:{$value.tipp->getAuswaertsTipp()}
         </td>
         <td>
-            {$value.heim.tipp}:{$value.auswaerts.tipp}
+            {$pkt=$value.tipp->getPunkte()}
+            {if="is_null($pkt)"}
+            -
+            {else}
+            {$pkt}
+            {/if}
         </td>
-        <td>
-            {$value.punkte}
-        </td>
+        {/if}
     </tr>
 {/loop}
 </table>
@@ -50,16 +60,16 @@
 <h2>Nächster Spieltag</h2>
 <p>{$spieltagNaechst}. Spieltag</p>
 <table class="ergebnisUebersicht">
-{loop="aktuelleSpiele"}
+{loop="$naechsteSpiele"}
     <tr>
         <td>
-            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+            <{$img} src="data:image/png;base64,{$value->getHeim()->getLogo()}" alt="{$value->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value->getHeim()->getName()}
         </td>
         <td class="abstandHalterBindestrich">
             -
         </td>
         <td>
-            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+            <{$img} src="data:image/png;base64,{$value->getAuswaerts()->getLogo()}" alt="{$value->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value->getAuswaerts()->getName()}
         </td>
         <td>
             -:-
