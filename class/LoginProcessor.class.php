@@ -6,22 +6,31 @@
  */
 class LoginProcessor
 {
-    public function __construct()
+    public function __construct($logout = false)
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $ret = array();
-        if ($_SESSION['session']->login($username, $password))
+        if ($logout)
         {
-            $ret['message'] = 'Erfolgreich eingeloggt.';
-            $ret['error'] = 0;
+            $_SESSION['session']->logout();
+            header("Content-type: application/json");
+            print json_encode(array('error' => 0));
         }
         else
         {
-            $ret['error'] = $_SESSION['session']->getLoginErrno();
-            $ret['message'] = $_SESSION['session']->getLoginError();
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $ret = array();
+            if ($_SESSION['session']->login($username, $password))
+            {
+                $ret['message'] = 'Erfolgreich eingeloggt.';
+                $ret['error'] = 0;
+            }
+            else
+            {
+                $ret['error'] = $_SESSION['session']->getLoginErrno();
+                $ret['message'] = $_SESSION['session']->getLoginError();
+            }
+            header("Content-type: application/json");
+            print json_encode($ret);
         }
-        header("Content-type: application/json");
-        print json_encode($ret);
     }
 }
