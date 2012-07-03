@@ -14,6 +14,7 @@ class StartUp
         include '../lib/rain.tpl.class.php';
         include '../lib/PasswordHash.php';
         $this->createSession();
+        $this->defineConstants();
     }
 
     private function createSession()
@@ -27,5 +28,12 @@ class StartUp
     private function sendHeader()
     {
         header("Content-type: text/html; charset=UTF-8");
+    }
+
+    private function defineConstants()
+    {
+        define('TIPPSPIEL_AUSWAERTSSIEG', 31999);
+        define('TIPPSPIEL_UNENTSCHIEDEN', 32000);
+        define('TIPPSPIEL_HEIMSIEG', 32001);
     }
 }
