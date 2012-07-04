@@ -71,6 +71,7 @@ class HomePage
                 {
                     $st[$i]['tipp'] = null;
                 }
+                ++$i;
             }
             $this->raintpl->assign('aktuelleErgebnisse', true);
             $this->raintpl->assign('aktuelleSpiele', $st);
