@@ -18,7 +18,7 @@ $(document).ready(function() {
                 }
             }
         };
-        $('#loginForm').ajaxSubmit(options).error(connectError());
+        $('#loginForm').ajaxSubmit(options).error(connectError);
         return false;
     });
 
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 }
             }
         };
-        $('#registerForm').ajaxSubmit(options).error(connectError());
+        $('#registerForm').ajaxSubmit(options).error(connectError);
         return false;
     });
 
