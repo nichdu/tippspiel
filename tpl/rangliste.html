@@ -22,7 +22,7 @@
         </th>
     </tr>
     {loop="points"}
-    <tr>
+    <tr{if="$value.username==$username"} id="thisUser"{/if}>
         <th>
             {$key}
         </th>
