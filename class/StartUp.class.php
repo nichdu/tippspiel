@@ -15,6 +15,7 @@ class StartUp
         include '../lib/PasswordHash.php';
         $this->createSession();
         $this->defineConstants();
+        $this->configureRainTpl();
     }
 
     private function createSession()
@@ -44,6 +45,12 @@ class StartUp
 
         define('TIPPSPIEL_OWN_PROFILE', 32050);
         define('TIPPSPIEL_OTHER_PROFILE', 32051);
+    }
+
+    private function configureRainTpl()
+    {
+        RainTPL::configure('base_url', TIPPSPIEL_CONF_PROTO . '://' . TIPPSPIEL_CONF_DOMAIN . TIPPSPIEL_CONF_PATH);
+        RainTPL::configure( 'path_replace_list', array( 'img', 'link', 'script' ) );
     }
 
     /**
