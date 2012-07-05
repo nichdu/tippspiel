@@ -20,6 +20,7 @@ class HomePage
     private function determineIfLoggedInAndCallAccordingMethods()
     {
         $this->raintpl->assign('title', 'Tippspiel');
+        $this->raintpl->assign('login', $_SESSION['session']->getLogin());
         if ($_SESSION['session']->getLogin())
         {
             $this->beginLoggedIn();
@@ -37,7 +38,6 @@ class HomePage
 
     private function beginLoggedIn()
     {
-        $this->raintpl->assign('login', true);
         $this->generateAktuelleErgebnisse();
         $this->generateNaechstenSpieltag();
         $this->raintpl->draw('home');
