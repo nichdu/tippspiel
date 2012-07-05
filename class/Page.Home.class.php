@@ -19,8 +19,7 @@ class HomePage
 
     private function determineIfLoggedInAndCallAccordingMethods()
     {
-        $this->raintpl->assign('title', 'Tippspiel');
-        $this->raintpl->assign('login', $_SESSION['session']->getLogin());
+        StartUp::AssignVars($this->raintpl);
         if ($_SESSION['session']->getLogin())
         {
             $this->beginLoggedIn();
