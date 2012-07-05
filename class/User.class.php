@@ -58,6 +58,30 @@ class User
     }
 
     /**
+     * @static
+     * @return int[]
+     */
+    public static function getUIDArray()
+    {
+        $array = array();
+        $db = Database::getDbObject();
+        $stmt = $db->prepare("SELECT `id` FROM `users`;");
+        if ($stmt->execute())
+        {
+            if ($stmt->store_result())
+            {
+                $uid = 0;
+                $stmt->bind_result($uid);
+                while ($stmt->fetch())
+                {
+                    $array[] = $uid;
+                }
+            }
+        }
+        return $array;
+    }
+
+    /**
      * @var int
      */
     private $id;
