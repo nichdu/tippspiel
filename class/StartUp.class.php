@@ -54,6 +54,6 @@ class StartUp
     public static function AssignVars(RainTPL &$tpl, $title = '')
     {
         $tpl->assign('login', $_SESSION['session']->getLogin());
-        $tpl->assign('title', $title !== '' ? TIPPSPIEL_CONF_TITLE : $title . ' | ' . TIPPSPIEL_CONF_TITLE);
+        $tpl->assign('title', $title === '' ? TIPPSPIEL_CONF_TITLE : $title . ' | ' . TIPPSPIEL_CONF_TITLE);
     }
 }
