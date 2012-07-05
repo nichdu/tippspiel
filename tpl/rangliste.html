@@ -24,10 +24,10 @@
     {loop="points"}
     <tr{if="$value.username==$username"} id="thisUser"{/if}>
         <th>
-            {$key}
+            {$key}.
         </th>
         <td>
-            {$value.username}
+            <a href="/profil/{$value.username}">{$value.username}</a>
         </td>
         <td>
             {$value.exakt}
