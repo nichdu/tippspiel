@@ -11,8 +11,8 @@ class LoginProcessor
         if ($logout)
         {
             $_SESSION['session']->logout();
-            header("Content-type: application/json");
-            print json_encode(array('error' => 0));
+            header("Location: " . TIPPSPIEL_CONF_PROTO . "://" . TIPPSPIEL_CONF_DOMAIN . TIPPSPIEL_CONF_PATH);
+            exit;
         }
         else
         {
