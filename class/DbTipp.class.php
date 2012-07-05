@@ -16,6 +16,10 @@ class DbTipp extends Tipp
      */
     private $spiel_id;
 
+    /**
+     * @param int $uid
+     * @param int $spiel_id
+     */
     public function __construct($uid, $spiel_id)
     {
         $this->uid = $uid;
