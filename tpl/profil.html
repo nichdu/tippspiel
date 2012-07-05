@@ -1,0 +1,107 @@
+{include="header"}
+<h1>{$name}</h1>
+{if="$ownprofile"}
+<h2>Allgemeine Daten</h2>
+<form action="/profil/aendern" method="POST" accept-charset="utf-8" id="profilAendernForm">
+<table class="user_overview">
+    <tr>
+        <th>
+            Benutzername<br/>
+            <a class="changeButton" id="changeUserName" href="#">ändern</a>
+        </th>
+        <td id="tableUserNameInput">
+            {$name}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            E-Mail-Adresse<br/>
+            <a class="changeButton" id="changeMailAddress" href="#">ändern</a>
+        </th>
+        <td id="tableEmailInput">
+            {$email}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Passwort<br/>
+            <a class="changeButton" id="changePassword" href="#">ändern</a>
+        </th>
+        <td id="tablePasswordInput">
+            <input type="password" disabled="disabled" value="password" name="password" id="passwordInput" />
+        </td>
+    </tr>
+</table>
+<p style="display: none;" id="submitProfilAendernFormP"><a href="#" id="profilAendernLink">Speichern.</a></p>
+</form>
+{/if}
+<h2>Punkte</h2>
+<table class="punkte_overview">
+    <thead>
+    <tr>
+        <th></th>
+        <th>
+            Anzahl
+        </th>
+        <th>
+            Punkte
+        </th>
+    </tr>
+    </thead>
+    <tr>
+        <th class="leftHeading">
+            Gesamt
+        </th>
+        <td>
+            {$punkte.gesamt.anzahl}
+        </td>
+        <td>
+            {$punkte.gesamt.punkte}
+        </td>
+    </tr>
+    <tr>
+        <th class="leftHeading">
+            korrektes Ergebnis
+        </th>
+        <td>
+            {$punkte.ergebnis.anzahl}
+        </td>
+        <td>
+            {$punkte.ergebnis.punkte}
+        </td>
+    </tr>
+    <tr>
+        <th class="leftHeading">
+            korrekte Tordifferenz
+        </th>
+        <td>
+            {$punkte.differenz.anzahl}
+        </td>
+        <td>
+            {$punkte.differenz.punkte}
+        </td>
+    </tr>
+    <tr>
+        <th class="leftHeading">
+            Sieger korrekt
+        </th>
+        <td>
+            {$punkte.sieger.anzahl}
+        </td>
+        <td>
+            {$punkte.sieger.punkte}
+        </td>
+    </tr>
+    <tr>
+        <th class="leftHeading">
+            falsches Ergebnis
+        </th>
+        <td>
+            {$punkte.falsch.anzahl}
+        </td>
+        <td>
+            0
+        </td>
+    </tr>
+</table>
+{include="footer"}
