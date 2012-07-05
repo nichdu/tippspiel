@@ -67,6 +67,8 @@ class RegisterProcessor
     private function checkUserName()
     {
         $check = preg_match(self::userRegEx, $this->user) === 1;
+        if ($check)
+            $check = strtolower($this->user) !== 'aendern';
         if (!$check)
         {
             $this->errno = 2;
