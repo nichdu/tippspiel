@@ -6,7 +6,7 @@
 
 $(document).ready(function() {
     // Macht aus der Login-Form eine Ajax-Form
-    $('#loginlink').click(function()
+    $('#loginLink').click(function()
     {
         var options = {
             success:    function(data) {
