@@ -13,9 +13,16 @@ class RanglistePage
 
     public function __construct()
     {
-        $this->tpl = new RainTPL();
-        $this->generateListe();
-        $this->draw();
+        if ($_SESSION['session']->getLogin())
+        {
+            $this->tpl = new RainTPL();
+            $this->generateListe();
+            $this->draw();
+        }
+        else
+        {
+            new HomePage();
+        }
     }
 
     private function generateListe()

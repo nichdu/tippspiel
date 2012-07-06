@@ -8,16 +8,23 @@ class FremdProfilPage extends ProfilPage
 {
     public function __construct($username)
     {
-        try
+        if ($_SESSION['session']->getLogin())
         {
-            parent::__construct($username);
+            try
+            {
+                parent::__construct($username);
+            }
+            catch (UserExistiertNichtException $e)
+            {
+                new Error404Page();
+                return;
+            }
+            $this->draw();
         }
-        catch (UserExistiertNichtException $e)
+        else
         {
-            new Error404Page();
-            return;
+            new HomePage();
         }
-        $this->draw();
     }
 
     protected function draw()

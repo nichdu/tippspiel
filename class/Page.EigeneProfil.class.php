@@ -8,9 +8,16 @@ class EigeneProfilPage extends ProfilPage
 {
     public function __construct()
     {
-        parent::__construct($_SESSION['session']->getUserName());
-        $this->assignUserVars();
-        $this->draw();
+        if ($_SESSION['session']->getLogin())
+        {
+            parent::__construct($_SESSION['session']->getUserName());
+            $this->assignUserVars();
+            $this->draw();
+        }
+        else
+        {
+            new HomePage();
+        }
     }
 
     private function assignUserVars()
