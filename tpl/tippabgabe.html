@@ -1,29 +1,31 @@
 {include="header"}
+{$img="img"}
 <h1>Tippabgabe</h1>
 <form action="index.php"><label for="spieltagAuswahl">Spieltag: </label><select id="spieltagAuswahl">
 {loop="$spieltage"}
-<option value="{$value}">{$value}</option>
+<option value="{$value}" {if="$value===$spieltag"}selected="selected"{/if}>{$value}</option>
 {/loop}
 </select></form>
-<form action="tipp.php" method="post" accept-charset="UTF-8">
+<h2>{$spieltag}. Spieltag</h2>
+<form action="/tippabgabe" method="post" accept-charset="UTF-8">
 <table class="ergebnisUebersicht">
 {loop="$spiele"}
     <tr>
-        <td>
-            <img src="{$value.heim.logo}" alt="{$value.heim.kuerzel}" class="logo" />&nbsp;{$value.heim.name}
+        <td class="heim">
+            <{$img} src="data:image/png;base64,{$value->getHeim()->getLogo()}" alt="{$value->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value->getHeim()->getName()}
         </td>
         <td class="abstandHalterBindestrich">
             -
         </td>
-        <td>
-            <img src="{$value.auswaerts.logo}" alt="{$value.auswaerts.kuerzel}" class="logo" />&nbsp;{$value.auswaerts.name}
+        <td class="auswaerts">
+            <{$img} src="data:image/png;base64,{$value->getAuswaerts()->getLogo()}" alt="{$value->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value->getAuswaerts()->getName()}
         </td>
         <td>
-            <input type="text" size="2" name="spiel_{$value.id}_heim" />:<input type="text" size="2" name="spiel_{$value.id}_auswaerts" />
+            <input type="text" size="2" name="spiel_{$value->getId()}_heim" {if="$abgelaufen"}disabled="disabled" {/if}/>:<input type="text" size="2" name="spiel_{$value->getId()}_auswaerts" {if="$abgelaufen"}disabled="disabled" {/if}/>
         </td>
     </tr>
 {/loop}
 </table>
-<span><a href="#" id="tippSubmit">Speicherns</a></span>
+<span><a href="#" id="tippSubmit">Speichern</a></span>
 </form>
 {include="footer"}
