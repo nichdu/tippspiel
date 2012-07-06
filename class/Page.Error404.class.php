@@ -10,7 +10,8 @@ class Error404Page
     {
         $tpl = new RainTPL();
         StartUp::AssignVars($tpl, 'Seite nicht gefunden');
-        $tpl->assign('uri', htmlentities($_SERVER['REQUEST_URI']));
+        $pageSelector = PageSelector::getSelector();
+        $tpl->assign('uri', htmlentities($pageSelector->getFullQuery()));
         $tpl->draw('404');
     }
 }
