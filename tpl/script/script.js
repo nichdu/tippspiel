@@ -57,7 +57,7 @@ $(document).ready(function() {
     });
 
     // Validiert die E-Mail-Adresse bei Eingabe
-    $('#register_email_input').bind('textchange', function(event, previousText) {
+    $('#register_email_input').bind('textchange', function() {
         if (checkEmailAddress($(this).val())) {
             $('#register_email_info').html('&#x2714;').css('color', 'green');
         } else {
@@ -66,7 +66,7 @@ $(document).ready(function() {
     });
 
     // Validiert den Benutzernamen bei Eingabe
-    $('#register_username_input').bind('textchange', function(event, previousText) {
+    $('#register_username_input').bind('textchange', function() {
         var value = $(this).val();
         var regex = /^[A-Za-z]\w+$/;
         if (parseInt(value.length) >= 3 && regex.test(value)) {
@@ -77,7 +77,7 @@ $(document).ready(function() {
     });
 
     // Validiert das Passwort bei Eingabe
-    $('#register_pwd_input').bind('textchange', function(event, previousText) {
+    $('#register_pwd_input').bind('textchange', function() {
         var value = $(this).val();
         var regex = /^\S.*\S$/;
         if (parseInt(value.length) >= 8 && regex.test(value)) {
@@ -88,7 +88,7 @@ $(document).ready(function() {
     });
 
     // Validiert die Passwortwiederholung bei Eingabe
-    $('#register_wdh_input').bind('textchange', function(event, previousText) {
+    $('#register_wdh_input').bind('textchange', function() {
         var value = $(this).val();
         var pwd = $('#register_pwd_input').val();
         if (value == pwd) {
