@@ -6,7 +6,7 @@ class Loader
 {
     public function __construct()
     {
-        include __DIR__ . '/../config.php';
+        include __DIR__ . '/../config/config.inc';
         spl_autoload_register(array($this, 'autoLoad'));
     }
 
