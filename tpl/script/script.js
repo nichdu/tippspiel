@@ -22,6 +22,15 @@ $(document).ready(function() {
         return false;
     });
 
+    // Login-Form per Enter abschickbar
+    $('#loginForm :input').keyup(function(event)
+    {
+        if (event.keyCode == 13)
+        {
+            $('#loginLink').click();
+        }
+    });
+
     // Macht aus der Registrierungsform eine Ajax-Form
     $('#registerLink').click(function()
     {
@@ -36,6 +45,15 @@ $(document).ready(function() {
         };
         $('#registerForm').ajaxSubmit(options).error(connectError);
         return false;
+    });
+
+    // Registrier-Form per Enter abschickbar
+    $('#registerForm :input').keyup(function(event)
+    {
+        if (event.keyCode == 13)
+        {
+            $('#registerLink').click();
+        }
     });
 
     // Validiert die E-Mail-Adresse bei Eingabe
