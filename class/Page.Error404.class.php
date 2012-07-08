@@ -8,6 +8,7 @@ class Error404Page
 {
     public function __construct()
     {
+        header("HTTP/1.1 404 Not Found");
         $tpl = new RainTPL();
         StartUp::AssignVars($tpl, 'Seite nicht gefunden');
         $pageSelector = PageSelector::getSelector();
