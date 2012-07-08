@@ -76,6 +76,10 @@ class HomePage
             $this->raintpl->assign('aktuelleSpiele', $st);
             $this->raintpl->assign('spieltagAktuell', $id);
         }
+        else
+        {
+            $this->raintpl->assign('aktuelleErgebnisse', false);
+        }
     }
 
     private function generateNaechstenSpieltag()
@@ -99,6 +103,10 @@ class HomePage
             $this->raintpl->assign('naechsterSpieltag', true);
             $this->raintpl->assign('naechsteSpiele', $st);
             $this->raintpl->assign('spieltagNaechst', $id);
+        }
+        else
+        {
+            $this->raintpl->assign('naechsterSpieltag', false);
         }
     }
 }
