@@ -7,7 +7,7 @@
 {/loop}
 </select></form>
 <h2>{$spieltag}. Spieltag</h2>
-<form action="/tippabgabe" method="post" accept-charset="UTF-8">
+<form action="/tippabgabe/submit" method="post" accept-charset="UTF-8">
 <input type="hidden" name="spieltag" value="{$spieltag}" />
 <table class="ergebnisUebersicht">
 {loop="$spiele"}
