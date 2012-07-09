@@ -23,6 +23,10 @@ class Spieltag implements Iterator
      * @var DateTime
      */
     private $datum;
+    /**
+     * @var DateTime
+     */
+    private $tipp_ende;
 
     /**
      * Erstellt eine neue Instanz der Klasse
@@ -38,7 +42,7 @@ class Spieltag implements Iterator
     private function loadDatum()
     {
         $db = Database::getDbObject();
-        $stmt = $db->prepare("SELECT `datum` FROM `spieltage` WHERE `spieltag` = ?;");
+        $stmt = $db->prepare("SELECT `datum`, `tipp_ende` FROM `spieltage` WHERE `spieltag` = ?;");
         $stmt->bind_param('i', $this->spieltag);
         if (!$stmt->execute())
         {
@@ -50,9 +54,11 @@ class Spieltag implements Iterator
             throw new SpieltagExistiertNichtException();
         }
         $datum = null;
-        $stmt->bind_result($datum);
+        $tipp_ende = null;
+        $stmt->bind_result($datum, $tipp_ende);
         $stmt->fetch();
         $this->datum = new DateTime($datum);
+        $this->tipp_ende = new DateTime($tipp_ende);
     }
 
     private function loadFromDatabase()
@@ -107,5 +113,10 @@ class Spieltag implements Iterator
     public function getDate()
     {
         return $this->datum;
+    }
+
+    public function getTippFrist()
+    {
+        return $this->tipp_ende;
     }
 }
