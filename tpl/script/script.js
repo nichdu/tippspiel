@@ -63,7 +63,7 @@ $(document).ready(function() {
     $('#registerLink').click(function()
     {
         var options = {
-            beforeSubmit: function(arr, $form) {
+            beforeSubmit: function() {
                 var value = $('#register_wdh_input').val();
                 var pwd = $('#register_pwd_input').val();
                 passwordsMatch = value == pwd;
