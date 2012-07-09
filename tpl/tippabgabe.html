@@ -7,7 +7,8 @@
 {/loop}
 </select></form>
 <h2>{$spieltag}. Spieltag</h2>
-<form action="/tippabgabe/submit" method="post" accept-charset="UTF-8">
+<p>Ende der Tippabgabefrist: {$ende->format("d.m.Y H:i")}</p>
+<form action="/tippabgabe/submit" method="post" accept-charset="UTF-8" id="tippabgabeForm">
 <input type="hidden" name="spieltag" value="{$spieltag}" />
 <table class="ergebnisUebersicht">
 {loop="$spiele"}
