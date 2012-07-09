@@ -90,8 +90,9 @@ class TippabgabePage
     private function loadSpiele()
     {
         $spieltag = new Spieltag($this->spieltag);
-        $today = new DateTime('today');
-        if ($spieltag->getDate() <= $today)
+        $now = new DateTime('now');
+        $this->tpl->assign('ende', $spieltag->getTippFrist());
+        if ($spieltag->getTippFrist() <= $now)
         {
             $this->tpl->assign('abgelaufen', true);
         }
