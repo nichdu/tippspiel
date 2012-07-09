@@ -66,5 +66,14 @@ class StartUp
     {
         $tpl->assign('login', $_SESSION['session']->getLogin());
         $tpl->assign('title', $title === '' ? TIPPSPIEL_CONF_TITLE : $title . ' | ' . TIPPSPIEL_CONF_TITLE);
+        if ($_SESSION['session']->getErrno() !== 0)
+        {
+            $tpl->assign('permlogin_error', true);
+            $tpl->assign('permlogin_msg', $_SESSION['session']->getError());
+        }
+        else
+        {
+            $tpl->assign('permlogin_error', false);
+        }
     }
 }

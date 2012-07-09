@@ -19,7 +19,7 @@ class LoginProcessor
             $username = $_POST['username'];
             $password = $_POST['password'];
             $ret = array();
-            if ($_SESSION['session']->login($username, $password))
+            if ($_SESSION['session']->login($username, $password, $_POST['stayLoggedIn'] == 'true'))
             {
                 $ret['message'] = 'Erfolgreich eingeloggt.';
                 $ret['error'] = 0;
