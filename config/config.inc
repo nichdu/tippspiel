@@ -16,3 +16,7 @@ define('TIPPSPIEL_CONF_PROTO', 'http');
 define('TIPPSPIEL_CONF_DOMAIN', 'tippspiel.example.com');
 define('TIPPSPIEL_CONF_PATH', '/');
 define('TIPPSPIEL_CONF_TITLE', 'Tippspiel');
+
+define('TIPPSPIEL_CONF_CURRENT_SAISON', 2012);
+
+define('TIPPSPIEL_CONF_VALIDITY', 365 * 24 * 60 * 60);
