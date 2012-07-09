@@ -4,7 +4,35 @@
  * All rights reserved
  */
 
+var emailCorrect = false,
+    userCorrect = false,
+    passwordCorrect = false,
+    passwordsMatch = false;
+
 $(document).ready(function() {
+    // Macht aus der Tippabgabe-Form eine Ajax-Form
+    $('#tippSubmit').click(function(){
+        var options = {
+            success: function(data) {
+                $('#message').html(data.message).show();
+                if (data.error == 0)
+                {
+                    $('#message').css('color', 'green');
+                }
+            }
+        };
+        $('#tippabgabeForm').ajaxSubmit(options).error(connectError);
+        return false;
+    });
+
+    // Tippabgabe-Form per Enter abschickbar
+    $('#tippabgabeForm :input').keyup(function(event) {
+        if (event.which == 13)
+        {
+            $('#tippSubmit').click();
+        }
+    });
+
     // Macht aus der Login-Form eine Ajax-Form
     $('#loginLink').click(function()
     {
@@ -25,7 +53,7 @@ $(document).ready(function() {
     // Login-Form per Enter abschickbar
     $('#loginForm :input').keyup(function(event)
     {
-        if (event.keyCode == 13)
+        if (event.which == 13)
         {
             $('#loginLink').click();
         }
@@ -35,7 +63,28 @@ $(document).ready(function() {
     $('#registerLink').click(function()
     {
         var options = {
-            success:    function(data) {
+            beforeSubmit: function(arr, $form) {
+                var value = $('#register_wdh_input').val();
+                var pwd = $('#register_pwd_input').val();
+                passwordsMatch = value == pwd;
+                if (!userCorrect) {
+                    $('#message').html('Der eingegebene Benutzername ist nicht gültig.').show();
+                    return false;
+                }
+                if (!emailCorrect) {
+                    $('#message').html('Die eingegebene E-Mail-Adresse ist nicht gültig.').show();
+                    return false;
+                }
+                if (!passwordCorrect) {
+                    $('#message').html('Das eingegebene Passwort ist nicht gültig.').show();
+                    return false;
+                }
+                if (!passwordsMatch) {
+                    $('#message').html('Die eingegebenen Passwörter stimmen nicht überein.').show();
+                    return false;
+                }
+            },
+            success: function(data) {
                 $('#message').html(data.message).show();
                 if (data.error == 0)
                 {
@@ -58,6 +107,7 @@ $(document).ready(function() {
 
     // Validiert die E-Mail-Adresse bei Eingabe
     $('#register_email_input').bind('textchange', function() {
+        emailCorrect = checkEmailAddress($(this).val());
         if (checkEmailAddress($(this).val())) {
             $('#register_email_info').html('&#x2714;').css('color', 'green');
         } else {
@@ -70,8 +120,10 @@ $(document).ready(function() {
         var value = $(this).val();
         var regex = /^[A-Za-z]\w+$/;
         if (parseInt(value.length) >= 3 && regex.test(value)) {
+            userCorrect = true;
             $('#register_username_info').html('&#x2714;').css('color', 'green');
         } else {
+            userCorrect = false;
             $('#register_username_info').html('&#x2716;').css('color', 'red');
         }
     });
@@ -81,8 +133,10 @@ $(document).ready(function() {
         var value = $(this).val();
         var regex = /^\S.*\S$/;
         if (parseInt(value.length) >= 8 && regex.test(value)) {
+            passwordCorrect = true;
             $('#register_pwd_info').html('&#x2714;').css('color', 'green');
         } else {
+            passwordCorrect = false;
             $('#register_pwd_info').html('&#x2716;').css('color', 'red');
         }
     });
@@ -91,11 +145,22 @@ $(document).ready(function() {
     $('#register_wdh_input').bind('textchange', function() {
         var value = $(this).val();
         var pwd = $('#register_pwd_input').val();
+        passwordsMatch = (value == pwd);
         if (value == pwd) {
             $('#register_wdh_info').html('&#x2714;').css('color', 'green');
         } else {
             $('#register_wdh_info').html('&#x2716;').css('color', 'red');
         }
+    });
+
+    $('#spieltagAuswahl').change(function()
+    {
+        window.location.href = '/tippabgabe/' + $('#spieltagAuswahl').val();
+    });
+
+    $('#spieltagAuswahlErgebnisse').change(function()
+    {
+        window.location.href = '/ergebnisse/' + $('#spieltagAuswahlErgebnisse').val();
     });
 });
 
