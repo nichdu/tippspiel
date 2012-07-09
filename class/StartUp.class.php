@@ -16,6 +16,10 @@ class StartUp
         $this->createSession();
         $this->defineConstants();
         $this->configureRainTpl();
+        if (!$_SESSION['session']->getLogin())
+        {
+            $_SESSION['session']->checkPermanentLogin();
+        }
     }
 
     private function createSession()
