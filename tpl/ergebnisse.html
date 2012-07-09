@@ -1,0 +1,28 @@
+{include="header"}
+{$img="img"}
+<h1>Ergebnisse</h1>
+<form action="index.php"><label for="spieltagAuswahlErgebnisse">Spieltag: </label><select id="spieltagAuswahlErgebnisse">
+    {loop="$spieltage"}
+    <option value="{$value}" {if="$value===$spieltag"}selected="selected"{/if}>{$value}</option>
+    {/loop}
+</select></form>
+<h2>{$spieltag}. Spieltag</h2>
+<table class="ergebnisUebersicht">
+    {loop="$spiele"}
+    <tr>
+        <td class="heim">
+            <{$img} src="data:image/png;base64,{$value->getHeim()->getLogo()}" alt="{$value->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value->getHeim()->getName()}
+        </td>
+        <td class="abstandHalterBindestrich">
+            -
+        </td>
+        <td class="auswaerts">
+            <{$img} src="data:image/png;base64,{$value->getAuswaerts()->getLogo()}" alt="{$value->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value->getAuswaerts()->getName()}
+        </td>
+        <td>
+            {$value->getHeimTore()}:{$value->getAuswaertsTore()}
+        </td>
+    </tr>
+    {/loop}
+</table>
+{include="footer"}
