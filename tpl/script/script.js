@@ -184,7 +184,7 @@ $(document).ready(function() {
     $('#profilAendernLink').click(function() {
         var options = {
             beforeSubmit : function() {
-                if ($('#profilPasswordInput')) {
+                if (!$('#profilPasswordInput').is(':disabled')) {
                     var value = $('#profilPasswordInput').val();
                     var wdh = $('#profilPwdWdhInput').val();
                     var regex = /^\S.*\S$/;
@@ -209,6 +209,14 @@ $(document).ready(function() {
         $('#profilAendernForm').ajaxSubmit(options);
         return false;
     });
+
+    // Profil-Form per Enter abschickbar
+        $('#profilAendernForm :input').keyup(function(event) {
+            if (event.which == 13)
+            {
+                $('#profilAendernLink').click();
+            }
+        });
 });
 
 function connectError()

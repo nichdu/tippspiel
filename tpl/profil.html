@@ -29,11 +29,13 @@
             <a class="changeButton" id="changePassword" href="#">ändern</a>
         </th>
         <td id="tablePasswordInput">
-            <input type="password" disabled="disabled" value="password" name="password" id="passwordInput" />
+            <input type="password" disabled="disabled" value="password" name="password" id="profilPasswordInput" />
         </td>
     </tr>
 </table>
-<p style="display: none;" id="submitProfilAendernFormP"><a href="#" id="profilAendernLink">Speichern.</a></p>
+<p style="display: none;" id="submitProfilAendernFormP">
+    <input type="password" id="curPwd" name="curPwd" placeholder="Aktuelles Passwort" />
+    <br/><a href="#" id="profilAendernLink">Speichern</a></p>
 </form>
 {/if}
 <h2>Punkte</h2>
