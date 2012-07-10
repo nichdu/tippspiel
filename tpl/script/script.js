@@ -8,11 +8,32 @@ var emailCorrect = false,
     userCorrect = false,
     passwordCorrect = false,
     passwordsMatch = false;
+var confirmed = false;
+var cancel = false;
 
 $(document).ready(function() {
     // Macht aus der Tippabgabe-Form eine Ajax-Form
     $('#tippSubmit').click(function(){
         var options = {
+            beforeSubmit: function() {
+               cancel = false;
+               $('#tippabgabeForm :input[type=text]').each(function() {
+                    if (!is_int($(this).val())) {
+                        $('#message').html('Sie dürfen nur ganze Zahlen als Tipp angeben.').show().css('color', 'red');
+                        cancel = true;
+                    }
+                    if (cancel) { return; }
+                    if (parseInt($(this).val()) >= 10)
+                    {
+                        confirmed = confirm('Sind Sie sich sicher, dass Sie ein Ergebnis mit mehr als 10 Toren pro ' +
+                            'Mannschaft tippen wollen?');
+                        if (!confirmed) {
+                            cancel = true
+                        }
+                    }
+                });
+                return !cancel;
+            },
             success: function(data) {
                 $('#message').html(data.message).show();
                 if (data.error == 0)
