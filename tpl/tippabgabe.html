@@ -9,6 +9,7 @@
 <h2>{$spieltag}. Spieltag</h2>
 <p>Ende der Tippabgabefrist: {$ende->format("d.m.Y H:i")}</p>
 <form action="/tippabgabe/submit" method="post" accept-charset="UTF-8" id="tippabgabeForm">
+<p class="message" id="message" style="display: none;"></p>
 <input type="hidden" name="spieltag" value="{$spieltag}" />
 <table class="ergebnisUebersicht">
 {loop="$spiele"}
