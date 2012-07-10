@@ -59,13 +59,22 @@ class User
 
     /**
      * @static
+     * @param $activeOnly boolean Sollen nur aktive Benutzer zurueck gegeben werden
      * @return int[]
      */
-    public static function getUIDArray()
+    public static function getUIDArray($activeOnly = false)
     {
         $array = array();
         $db = Database::getDbObject();
-        $stmt = $db->prepare("SELECT `id` FROM `users`;");
+        $stmt = null;
+        if ($activeOnly)
+        {
+            $stmt = $db->prepare("SELECT `id` FROM `users` WHERE `active` = 1;");
+        }
+        else
+        {
+            $stmt = $db->prepare("SELECT `id` FROM `users`;");
+        }
         if ($stmt->execute())
         {
             if ($stmt->store_result())
