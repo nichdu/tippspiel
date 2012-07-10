@@ -50,17 +50,17 @@ class ErgebnissePage
         }
         else
         {
-            $this->loadNextSpieltagIdFromDatabase();
+            $this->loadVorherigenSpieltagIdFromDatabase();
         }
         $this->tpl->assign('spieltage', $this->loadSpieltageFromDatabase());
         $this->tpl->assign('spieltag', $this->spieltag);
         $this->tpl->assign('spiele', $this->loadSpiele());
     }
 
-    private function loadNextSpieltagIdFromDatabase()
+    private function loadVorherigenSpieltagIdFromDatabase()
     {
         $db = Database::getDbObject();
-        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` >= CURDATE() LIMIT 1;";
+        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` < CURDATE() LIMIT 1;";
         $stmt = $db->prepare($query);
         $stmt->execute();
         $stmt->store_result();
