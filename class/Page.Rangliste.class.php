@@ -29,7 +29,7 @@ class RanglistePage
     {
         $vorlaeufigesArray = array();
         $punkteArray = array();
-        $uidArray = User::getUIDArray();
+        $uidArray = User::getUIDArray(true);
         foreach ($uidArray as $uid)
         {
             $username = User::getNameById($uid);
