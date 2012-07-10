@@ -138,7 +138,7 @@ class PageSelector
                 new LoginProcessor();
                 break;
             default:
-                new Error404Page();
+                new DatabasePage($this->q[0]);
         }
     }
 
