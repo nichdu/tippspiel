@@ -162,6 +162,53 @@ $(document).ready(function() {
     {
         window.location.href = '/ergebnisse/' + $('#spieltagAuswahlErgebnisse').val();
     });
+
+    // Benutzerprofil editierbar machen
+    $('#changeMailAddress').click(function() {
+        var el = '<input type="email" name="profilEmailAddress" id="profilEmailAddressInput" value="'
+            + $.trim($('#tableEmailInput').html()) + '" />';
+        $('#tableEmailInput').html(el);
+        $('#changeMailAddress').hide();
+        $('#submitProfilAendernFormP').show();
+        return false;
+    });
+    $('#changePassword').click(function() {
+        var el = '<input type="password" name="profilPassword" id="profilPasswordInput" placeholder="Neues Passwort" />';
+        el += '&nbsp;<input type="password" name="profilPwdWdh" id="profilPwdWdhInput" placeholder="Wiederholen" />';
+        $('#tablePasswordInput').html(el);
+        $('#changePassword').hide();
+        $('#submitProfilAendernFormP').show();
+        return false;
+    });
+    $('#changeUserName').hide();
+    $('#profilAendernLink').click(function() {
+        var options = {
+            beforeSubmit : function() {
+                if ($('#profilPasswordInput')) {
+                    var value = $('#profilPasswordInput').val();
+                    var wdh = $('#profilPwdWdhInput').val();
+                    var regex = /^\S.*\S$/;
+                    if (parseInt(value.length) >= 8 && regex.test(value) && value == wdh) {
+                        return true;
+                    } else if (parseInt(value.length) >= 8 && regex.test(value) && value !== wdh) {
+                        $('#message').html('Die eingegebenen Passwörter stimmen nicht überein.').show();
+                        return false;
+                    } else {
+                        $('#message').html('Das eingegebene Passwort ist nicht gültig.').show();
+                        return false;
+                    }
+                }
+            },
+            success: function(data) {
+                $('#message').html(data.message).show();
+                if (data.error == 0) {
+                    $('#message').css('color', 'green');
+                }
+            }
+        };
+        $('#profilAendernForm').ajaxSubmit(options);
+        return false;
+    });
 });
 
 function connectError()

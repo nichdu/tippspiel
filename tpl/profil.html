@@ -3,10 +3,11 @@
 {if="$ownprofile"}
 <h2>Allgemeine Daten</h2>
 <form action="/profil/aendern" method="POST" accept-charset="utf-8" id="profilAendernForm">
+<p class="message" id="message" style="display: none;"></p>
 <table class="user_overview">
     <tr>
         <th>
-            Benutzername<br/>
+            Benutzername<!--<br/>-->
             <a class="changeButton" id="changeUserName" href="#">ändern</a>
         </th>
         <td id="tableUserNameInput">
@@ -15,7 +16,7 @@
     </tr>
     <tr>
         <th>
-            E-Mail-Adresse<br/>
+            E-Mail-Adresse<!--<br/>-->
             <a class="changeButton" id="changeMailAddress" href="#">ändern</a>
         </th>
         <td id="tableEmailInput">
@@ -24,7 +25,7 @@
     </tr>
     <tr>
         <th>
-            Passwort<br/>
+            Passwort<!--<br/>-->
             <a class="changeButton" id="changePassword" href="#">ändern</a>
         </th>
         <td id="tablePasswordInput">
