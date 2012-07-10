@@ -1,0 +1,14 @@
+# log errors but don't show them
+php_value error_reporting 6135
+php_flag display_errors false
+# end
+
+# setting PHP default charset to unicode (UTF-8)
+php_value default_charset "utf-8"
+
+# rewriting all requests that are not files or directories to be passed to index.php as path
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [L,NS]
