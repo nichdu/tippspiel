@@ -33,7 +33,7 @@ class DatabasePage
         }
         $this->id = $id;
         $this->loadFromDatabase();
-        if ($this->requireLogin && $_SESSION['session']->getLogin())
+        if ($this->requireLogin && !$_SESSION['session']->getLogin())
         {
             throw new Error403Exception();
         }
@@ -56,8 +56,8 @@ class DatabasePage
         }
         $bool = 0;
         $stmt->bind_result($this->title, $this->ctnt, $bool);
-        $this->requireLogin = $bool == 1;
         $stmt->fetch();
+        $this->requireLogin = $bool == 1;
     }
 
     private function draw()
