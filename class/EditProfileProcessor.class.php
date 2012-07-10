@@ -109,7 +109,7 @@ class EditProfileProcessor
 
     private function respond()
     {
-        $msg = '';
+        $msg = null;
         if ($this->errno === 0)
         {
             $msg = 'Erfolgreich gespeichert.';
