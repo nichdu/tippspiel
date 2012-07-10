@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+html {
+	background-color: #e0e0e0;
+	overflow-y: scroll;
+}
+
+.top {
+	width: 800px;
+	height: 288px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	border: 1px solid black;
+}
+
+.top img {
+    border: none;
+}
+
+.content {
+	font-family: Verdana, sans-serif;
+	width: 780px;
+	margin: 0 auto;
+	margin-top: 1px;
+	background-color: white;
+	border: 1px solid black;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ul.menu {
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu li {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    color: red;
+}
+
+.hint {
+    color: #c0c0c0;
+}
+
+.changeButton {
+    font-weight: normal;
+    font-size: smaller;
+}
+
+table.user_overview th, .leftHeading {
+    text-align: left;
+}
+
+table.punkte_overview, table.punkte_overview th, table.punkte_overview td,
+table.user_overview, table.user_overview th, table.user_overview td,
+table.ergebnisUebersicht, table.ergebnisUebersicht th, table.ergebnisUebersicht td {
+    border: 1px solid black;
+}
+
+table.punkte_overview td, table.punkte_overview th,
+table.user_overview td, table.user_overview th,
+table.ergebnisUebersicht td, table.ergebnisUebersicht th {
+    padding: 3px;
+}
+
+table.punkte_overview, table.user_overview, table.ergebnisUebersicht {
+    border-collapse: collapse;
+}
+
+.abstandHalterBindestrich {
+    border-right-style: hidden !important;
+    border-left-style: hidden !important;
+}
+
+td.changeElement {
+    border-left-style: hidden !important;
+    text-align: right;
+    padding-left: 2px;
+    margin-left: 2px;
+}
+
+th.topleft {
+    border-top-style: hidden !important;
+    border-left-style: hidden !important;
+}
+
+table.ergebnisUebersicht td img, table.user_overview td img, table.punkte_overview td img {
+    display: inline;
+}
+
+tr#thisUser {
+    background-color: #d0d0d0;
+}
+
+a.changeButton {
+    font-weight: normal;
+    font-size: smaller;
+}
+
+p.footnote {
+    font-size: smaller;
+}
+
+div.permlogin_error {
+    border: 3px solid red;
+    font-size: smaller;
+}
+
+a, a:visited, a:hover, a:active, a:focus {
+    color: #00e;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+}
