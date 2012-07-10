@@ -52,6 +52,27 @@ class PageSelector
      */
     public function selectPage()
     {
+        try
+        {
+            $this->callPage();
+        }
+        catch (Error404Exception $e)
+        {
+            new Error404Page();
+        }
+        catch (Error403Exception $e)
+        {
+            new HomePage();
+        }
+        catch (Exception $e)
+        {
+            print 'Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal '
+                . 'oder wenden Sie sich an einen Administrator.';
+        }
+    }
+
+    public function callPage()
+    {
         if ($this->alreadyCalled) { return; }
         $this->alreadyCalled = true;
         if (!isset($_SERVER['PATH_INFO']) || trim($_SERVER['PATH_INFO']) === '' || trim($_SERVER['PATH_INFO']) === '/')
