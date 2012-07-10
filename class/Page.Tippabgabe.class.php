@@ -90,6 +90,7 @@ class TippabgabePage
     private function loadSpiele()
     {
         $spieltag = new Spieltag($this->spieltag);
+        $uid = $_SESSION['session']->getUserId();
         $now = new DateTime('now');
         $this->tpl->assign('ende', $spieltag->getTippFrist());
         if ($spieltag->getTippFrist() <= $now)
@@ -101,9 +102,19 @@ class TippabgabePage
             $this->tpl->assign('abgelaufen', false);
         }
         $arr = array();
+        $spiel = new Spiel(1);
         foreach ($spieltag as $spiel)
         {
-            $arr[] = $spiel;
+            $arr[$spiel->getId()] = array();
+            $arr[$spiel->getId()]['spiel'] = $spiel;
+            try {
+                $tipp = new DbTipp($uid, $spiel->getId());
+                $arr[$spiel->getId()]['tipp'] = $tipp;
+            }
+            catch (TippExistiertNichtException $e)
+            {
+                $arr[$spiel->getId()]['tipp'] = false;
+            }
         }
         return $arr;
     }

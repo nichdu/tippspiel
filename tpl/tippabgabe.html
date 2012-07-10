@@ -15,16 +15,16 @@
 {loop="$spiele"}
     <tr>
         <td class="heim">
-            <{$img} src="data:image/png;base64,{$value->getHeim()->getLogo()}" alt="{$value->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value->getHeim()->getName()}
+            <{$img} src="data:image/png;base64,{$value.spiel->getHeim()->getLogo()}" alt="{$value.spiel->getHeim()->getKuerzel()}" class="logo" />&nbsp;{$value.spiel->getHeim()->getName()}
         </td>
         <td class="abstandHalterBindestrich">
             -
         </td>
         <td class="auswaerts">
-            <{$img} src="data:image/png;base64,{$value->getAuswaerts()->getLogo()}" alt="{$value->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value->getAuswaerts()->getName()}
+            <{$img} src="data:image/png;base64,{$value.spiel->getAuswaerts()->getLogo()}" alt="{$value.spiel->getAuswaerts()->getKuerzel()}" class="logo" />&nbsp;{$value.spiel->getAuswaerts()->getName()}
         </td>
         <td>
-            <input type="text" size="2" maxlength="3" name="spiel_{$value->getId()}_heim" {if="$abgelaufen"}disabled="disabled" {/if}/>:<input type="text" size="2" maxlength="3" name="spiel_{$value->getId()}_auswaerts" {if="$abgelaufen"}disabled="disabled" {/if}/>
+            <input type="text" size="2" maxlength="3" name="spiel_{$value.spiel->getId()}_heim" {if="$value.tipp"}value="{$value.tipp->getHeimTipp()}" {/if} {if="$abgelaufen"}disabled="disabled" {/if}/>:<input type="text" size="2" maxlength="3" name="spiel_{$value.spiel->getId()}_auswaerts" {if="$value.tipp"}value="{$value.tipp->getAuswaertsTipp()}" {/if} {if="$abgelaufen"}disabled="disabled" {/if}/>
         </td>
     </tr>
 {/loop}
