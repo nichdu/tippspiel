@@ -6,13 +6,13 @@ class StartUp
 {
     public function __construct()
     {
-        include './Session.class.php';
+        include 'Session.class.php';
         session_start();
         $this->sendHeader();
-        include './Loader.class.php';
+        include 'Loader.class.php';
         new Loader();
-        include '../lib/rain.tpl.class.php';
-        include '../lib/PasswordHash.php';
+        include 'lib/rain.tpl.class.php';
+        include 'lib/PasswordHash.php';
         $this->createSession();
         $this->defineConstants();
         $this->configureRainTpl();
