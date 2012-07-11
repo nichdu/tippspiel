@@ -16,8 +16,7 @@ class FremdProfilPage extends ProfilPage
             }
             catch (UserExistiertNichtException $e)
             {
-                new Error404Page();
-                return;
+                throw new Error404Exception();
             }
             $this->draw();
         }

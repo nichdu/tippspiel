@@ -28,7 +28,7 @@ class TippabgabePage
             }
             catch (SpieltagExistiertNichtException $e)
             {
-                new Error404Page();
+                throw new Error404Exception();
             }
         }
         else
