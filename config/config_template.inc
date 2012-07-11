@@ -1,6 +1,9 @@
 <?php
 /**
  * Konfigurationsdatei fuer Tippspiel-Software
+ * Diese Konfigurationsdatei sollte an die Konfiguration angepast werden und in config.inc umbenannt
+ * werden. Ausserdem sollten jedem Nutzer die Schreibrechte an dieser Datei genommen werden.
+ * Leserechte sollte nur der Webserver haben.
  */
 
 define('TIPPSPIEL_CONF_HOST', 'localhost');
