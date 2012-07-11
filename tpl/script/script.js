@@ -9,15 +9,18 @@ var emailCorrect = false,
     passwordCorrect = false,
     passwordsMatch = false;
 var confirmed = false;
-var cancel = false;
+var cancel = false,
+    asked = false;
 
 $(document).ready(function() {
     // Macht aus der Tippabgabe-Form eine Ajax-Form
     $('#tippSubmit').click(function(){
         var options = {
             beforeSubmit: function() {
+               asked = false;
                cancel = false;
                $('#tippabgabeForm :input[type=text]').each(function() {
+                    if (cancel || asked) { return; }
                     if (!is_int($(this).val())) {
                         $('#message').html('Sie dürfen nur ganze Zahlen als Tipp angeben.').show().css('color', 'red');
                         cancel = true;
@@ -27,6 +30,7 @@ $(document).ready(function() {
                     {
                         confirmed = confirm('Sind Sie sich sicher, dass Sie ein Ergebnis mit mehr als 10 Toren pro ' +
                             'Mannschaft tippen wollen?');
+                        asked = true;
                         if (!confirmed) {
                             cancel = true
                         }
