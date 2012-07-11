@@ -94,6 +94,7 @@ class ErgebnissePage
         $uid = $_SESSION['session']->getUserId();
         foreach ($spieltag as $spiel)
         {
+            /* @var $spiel Spiel */
             $arr[$spiel->getId()] = array();
             $arr[$spiel->getId()]['spiel'] = $spiel;
             try {

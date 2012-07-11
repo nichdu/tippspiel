@@ -58,6 +58,7 @@ class TippabgabeProcessor
     {
         foreach ($this->st_obj as $spiel)
         {
+            /* @var $spiel Spiel */
             if (is_numeric($_POST['spiel_' . $spiel->getId() . '_heim']) && is_numeric($_POST['spiel_' . $spiel->getId() . '_auswaerts']))
             {
                 $this->spiele[$spiel->getId()] = array();

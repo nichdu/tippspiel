@@ -104,6 +104,7 @@ class TippabgabePage
         $arr = array();
         foreach ($spieltag as $spiel)
         {
+            /* @var $spiel Spiel */
             $arr[$spiel->getId()] = array();
             $arr[$spiel->getId()]['spiel'] = $spiel;
             try {
