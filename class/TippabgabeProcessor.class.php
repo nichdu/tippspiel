@@ -56,7 +56,6 @@ class TippabgabeProcessor
 
     private function createTipps()
     {
-        $spiel = new Spiel(1);
         foreach ($this->st_obj as $spiel)
         {
             if (is_numeric($_POST['spiel_' . $spiel->getId() . '_heim']) && is_numeric($_POST['spiel_' . $spiel->getId() . '_auswaerts']))

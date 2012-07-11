@@ -92,7 +92,6 @@ class ErgebnissePage
         $spieltag = new Spieltag($this->spieltag);
         $arr = array();
         $uid = $_SESSION['session']->getUserId();
-        $spiel = new Spiel(1);
         foreach ($spieltag as $spiel)
         {
             $arr[$spiel->getId()] = array();

@@ -102,7 +102,6 @@ class TippabgabePage
             $this->tpl->assign('abgelaufen', false);
         }
         $arr = array();
-        $spiel = new Spiel(1);
         foreach ($spieltag as $spiel)
         {
             $arr[$spiel->getId()] = array();
