@@ -53,7 +53,6 @@ class OpenLigaDbParser
             {
                 $stmt->bind_result($spiel_id);
                 $stmt->fetch();
-                $stmt->close();
                 $stmt->prepare("SELECT `spiel_id` FROM `ergebnisse` WHERE `spiel_id` = ?;");
                 $stmt->bind_param('i', $spiel_id);
                 $stmt->execute();
@@ -71,7 +70,6 @@ class OpenLigaDbParser
                             break;
                         }
                     }
-                    $stmt->close();
                     $stmt->prepare("INSERT INTO `ergebnisse` VALUES(?,?,?);");
                     $stmt->bind_param('iii', $spiel_id, $heimTore, $auswTore);
                     $stmt->execute();
