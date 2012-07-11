@@ -33,7 +33,7 @@ class ErgebnissePage
         }
         else
         {
-            new HomePage();
+            throw new Error403Exception();
         }
     }
 

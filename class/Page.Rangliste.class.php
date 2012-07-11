@@ -21,7 +21,7 @@ class RanglistePage
         }
         else
         {
-            new HomePage();
+            throw new Error403Exception();
         }
     }
 

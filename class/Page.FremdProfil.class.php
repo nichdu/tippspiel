@@ -22,7 +22,7 @@ class FremdProfilPage extends ProfilPage
         }
         else
         {
-            new HomePage();
+            throw new Error403Exception();
         }
     }
 
