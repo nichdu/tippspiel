@@ -32,6 +32,8 @@ class HomePage
 
     private function beginNotLoggedIn()
     {
+        $_SESSION['login_access_token'] = $_SESSION['session']->token();
+        $this->raintpl->assign('login_access_token', $_SESSION['login_access_token']);
         $this->raintpl->draw('home');
     }
 
