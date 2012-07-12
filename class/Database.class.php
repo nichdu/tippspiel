@@ -13,6 +13,10 @@ class Database
     {
         $db = new mysqli(TIPPSPIEL_CONF_HOST, TIPPSPIEL_CONF_USER,
             TIPPSPIEL_CONF_PAWD, TIPPSPIEL_CONF_DABA);
+        if ($db->connect_error)
+        {
+            throw new ErrorException($db->connect_error, $db->connect_errno);
+        }
         $db->query("SET NAMES utf8");
 
         return $db;
