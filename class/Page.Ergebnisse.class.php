@@ -121,7 +121,7 @@ class ErgebnissePage
 
     private function draw()
     {
-        StartUp::AssignVars($this->tpl, 'Ergebnisse');
+        StartUp::AssignVars($this->tpl, 'Spielübersicht');
         $this->tpl->draw('ergebnisse');
     }
 }
