@@ -3,6 +3,7 @@
 html {
 	background-color: #e0e0e0;
 	overflow-y: scroll;
+    font-size: 14px;
 }
 
 .top {
