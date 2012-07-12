@@ -34,23 +34,33 @@ class RegisterProcessor
 
     public function __construct()
     {
-        $this->user = trim($_POST['username']);
-        $this->email = trim($_POST['email']);
-        $this->password = trim($_POST['pwd']);
-        $this->pwd_wdh = trim($_POST['wdh']);
-        if (!$this->checkEmail())
+        if (!isset($_POST['register_access_token'])
+            || $_POST['register_access_token'] !== $_SESSION['register_access_token'])
         {
-            $this->fail();
+            unset($_SESSION['register_access_token']);
+            exit;
         }
-        if (!$this->checkUserName())
+        else
         {
-            $this->fail();
+            unset($_SESSION['register_access_token']);
+            $this->user = trim($_POST['username']);
+            $this->email = trim($_POST['email']);
+            $this->password = trim($_POST['pwd']);
+            $this->pwd_wdh = trim($_POST['wdh']);
+            if (!$this->checkEmail())
+            {
+                $this->fail();
+            }
+            if (!$this->checkUserName())
+            {
+                $this->fail();
+            }
+            if (!$this->checkPassword())
+            {
+                $this->fail();
+            }
+            $this->create();
         }
-        if (!$this->checkPassword())
-        {
-            $this->fail();
-        }
-        $this->create();
     }
 
     private function checkEmail()

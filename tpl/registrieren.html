@@ -1,6 +1,7 @@
 {include="header"}
     <h1>Registrieren</h1>
     <form action="/registrieren/submit" method="post" accept-charset="UTF-8" id="registerForm">
+        <input type="hidden" name="register_access_token" value="{$register_access_token}" />
         <p class="message" id="message" style="display: none;"></p>
         <fieldset>
             <legend>Allgemeine Daten</legend>

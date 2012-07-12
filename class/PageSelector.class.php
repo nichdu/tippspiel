@@ -96,6 +96,8 @@ class PageSelector
                     else
                     {
                         $tpl = new RainTPL();
+                        $_SESSION['register_access_token'] = $_SESSION['session']->token();
+                        $tpl->assign('register_access_token', $_SESSION['register_access_token']);
                         StartUp::AssignVars($tpl, 'Registrieren');
                         $tpl->draw('registrieren');
                     }
