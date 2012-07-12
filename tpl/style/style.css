@@ -54,6 +54,14 @@ ul.menu li {
     font-size: smaller;
 }
 
+table.rangliste {
+    border: hidden !important;
+}
+
+table.rangliste th, table.rangliste td {
+    border: 1px solid black;
+}
+
 table.user_overview th, .leftHeading {
     text-align: left;
 }
@@ -67,11 +75,12 @@ table.tippFristen, table.tippFristen th, table.tippFristen td{
 
 table.punkte_overview td, table.punkte_overview th,
 table.user_overview td, table.user_overview th,
-table.ergebnisUebersicht td, table.ergebnisUebersicht th {
+table.ergebnisUebersicht td, table.ergebnisUebersicht th,
+table.tippFristen td, table.tippFristen th {
     padding: 3px;
 }
 
-table.punkte_overview, table.user_overview, table.ergebnisUebersicht, table.tippFristen {
+table.punkte_overview, table.user_overview, table.ergebnisUebersicht, table.tippFristen, table.rangliste {
     border-collapse: collapse;
 }
 
