@@ -39,9 +39,15 @@ class HomePage
 
     private function beginLoggedIn()
     {
+        $this->getNaechsteFristen();
         $this->generateAktuelleErgebnisse();
         $this->generateNaechstenSpieltag();
         $this->raintpl->draw('home');
+    }
+
+    private function getNaechsteFristen()
+    {
+        $this->raintpl->assign('naechste_fristen', (new NaechsteFristenPage(false, 3))->generate());
     }
 
     private function generateAktuelleErgebnisse()

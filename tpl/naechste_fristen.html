@@ -1,0 +1,20 @@
+<table class="tippFristen">
+    <tr>
+        <th>
+            Spieltag
+        </th>
+        <th>
+            Ende der Tippabgabefrist
+        </th>
+    </tr>
+    {loop="$spieltage"}
+    <tr>
+        <td>
+            {$key}
+        </td>
+        <td>
+            {$value->format('d.m.Y, H:i Uhr')}
+        </td>
+    </tr>
+    {/loop}
+</table>

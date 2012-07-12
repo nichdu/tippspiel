@@ -1,4 +1,8 @@
 {$img="img"}
+{if="!empty($naechste_fristen)"}
+<h2>Nächste Tippabgabefristen</h2>
+{$naechste_fristen}
+{/if}
 {if="$aktuelleErgebnisse"}
 <h2>Aktuelle Ergebnisse</h2>
 <p>{$spieltagAktuell}. Spieltag</p>
