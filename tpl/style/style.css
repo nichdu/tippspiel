@@ -60,7 +60,7 @@ table.user_overview th, .leftHeading {
 
 table.punkte_overview, table.punkte_overview th, table.punkte_overview td,
 table.user_overview, table.user_overview th, table.user_overview td,
-table.ergebnisUebersicht, table.ergebnisUebersicht th, table.ergebnisUebersicht td
+table.ergebnisUebersicht, table.ergebnisUebersicht th, table.ergebnisUebersicht td,
 table.tippFristen, table.tippFristen th, table.tippFristen td{
     border: 1px solid black;
 }
