@@ -115,8 +115,8 @@ a.changeButton {
     font-size: smaller;
 }
 
-p.footnote {
-    font-size: smaller;
+footer {
+    font-size: 11px;
 }
 
 div.permlogin_error {
