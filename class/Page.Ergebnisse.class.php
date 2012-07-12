@@ -50,17 +50,17 @@ class ErgebnissePage
         }
         else
         {
-            $this->loadVorherigenSpieltagIdFromDatabase();
+            $this->loadNaechstenSpieltagIdFromDatabase();
         }
         $this->tpl->assign('spieltage', $this->loadSpieltageFromDatabase());
         $this->tpl->assign('spieltag', $this->spieltag);
         $this->tpl->assign('spiele', $this->loadSpiele());
     }
 
-    private function loadVorherigenSpieltagIdFromDatabase()
+    private function loadNaechstenSpieltagIdFromDatabase()
     {
         $db = Database::getDbObject();
-        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` < CURDATE() LIMIT 1;";
+        $query = "SELECT `spieltag` FROM `spieltage` WHERE `datum` > CURDATE() LIMIT 1;";
         $stmt = $db->prepare($query);
         $stmt->execute();
         $stmt->store_result();
@@ -90,8 +90,18 @@ class ErgebnissePage
     private function loadSpiele()
     {
         $spieltag = new Spieltag($this->spieltag);
-        $arr = array();
         $uid = $_SESSION['session']->getUserId();
+        $now = new DateTime('now');
+        $this->tpl->assign('ende', $spieltag->getTippFrist());
+        if ($spieltag->getTippFrist() <= $now)
+        {
+            $this->tpl->assign('abgelaufen', true);
+        }
+        else
+        {
+            $this->tpl->assign('abgelaufen', false);
+        }
+        $arr = array();
         foreach ($spieltag as $spiel)
         {
             /* @var $spiel Spiel */

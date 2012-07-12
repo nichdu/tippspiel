@@ -1,12 +1,16 @@
 {include="header"}
 {$img="img"}
-<h1>Ergebnisse</h1>
+<h1>Spielübersicht</h1>
 <form action="index.php"><label for="spieltagAuswahlErgebnisse">Spieltag: </label><select id="spieltagAuswahlErgebnisse">
     {loop="$spieltage"}
     <option value="{$value}" {if="$value===$spieltag"}selected="selected"{/if}>{$value}</option>
     {/loop}
 </select></form>
 <h2>{$spieltag}. Spieltag</h2>
+<p>Ende der Tippabgabefrist: {$ende->format("d.m.Y H:i")}</p>
+<form action="/tippabgabe/submit" method="post" accept-charset="UTF-8" id="tippabgabeForm">
+<p class="message" id="message" style="display: none;"></p>
+<input type="hidden" name="spieltag" value="{$spieltag}" />
 <table class="ergebnisUebersicht">
     <tr>
         <th>Heim</th>
@@ -30,16 +34,23 @@
         <td>
             {$value.spiel->getHeimTore()}:{$value.spiel->getAuswaertsTore()}
         </td>
-        {if="$value.tipp"}
+        {if="$abgelaufen && $value.tipp"}
         <td>
             {$value.tipp->getHeimTipp()}:{$value.tipp->getAuswaertsTipp()}
         </td>
         <td>
             {$value.tipp->getPunkte()}
         </td>
-        {else}
+        {elseif="$abgelaufen && !$value.tipp"}
         <td>
             -
+        </td>
+        <td>
+            -
+        </td>
+        {else}
+        <td>
+            <input type="text" size="2" maxlength="3" name="spiel_{$value.spiel->getId()}_heim" {if="$value.tipp"}value="{$value.tipp->getHeimTipp()}" {/if}/>:<input type="text" size="2" maxlength="3" name="spiel_{$value.spiel->getId()}_auswaerts" {if="$value.tipp"}value="{$value.tipp->getAuswaertsTipp()}" {/if}/>
         </td>
         <td>
             -
@@ -48,4 +59,6 @@
     </tr>
     {/loop}
 </table>
+<p><a href="#" id="tippSubmit">Speichern</a></p>
+</form>
 {include="footer"}

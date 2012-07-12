@@ -106,6 +106,7 @@ class PageSelector
             case 'rangliste':
                 new RanglistePage();
                 break;
+            /*
             case 'tippabgabe':
                 if (isset($this->q[1]) && $this->q[1] === 'submit')
                 {
@@ -116,7 +117,8 @@ class PageSelector
                     new TippabgabePage();
                 }
                 break;
-            case 'ergebnisse':
+            */
+            case 'spieluebersicht':
                 new ErgebnissePage();
                 break;
             case 'profil':
