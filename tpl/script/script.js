@@ -178,14 +178,9 @@ $(document).ready(function() {
         }
     });
 
-    $('#spieltagAuswahl').change(function()
-    {
-        window.location.href = '/tippabgabe/' + $('#spieltagAuswahl').val();
-    });
-
     $('#spieltagAuswahlErgebnisse').change(function()
     {
-        window.location.href = '/ergebnisse/' + $('#spieltagAuswahlErgebnisse').val();
+        window.location.href = '/spieluebersicht/' + $('#spieltagAuswahlErgebnisse').val();
     });
 
     // Benutzerprofil editierbar machen
