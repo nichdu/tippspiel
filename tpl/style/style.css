@@ -6,6 +6,15 @@ html {
     font-size: 14px;
 }
 
+noscript {
+    color: #f00;
+    font-size: larger;
+    font-weight: bold;
+    display: block;
+    border: 2px solid red;
+    margin: 2px;
+}
+
 .top {
 	width: 800px;
 	height: 288px;
